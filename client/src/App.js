@@ -1,11 +1,12 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ApolloClient} from '@apollo/client';
 
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
-import Navbar from './components/Navbar';
+
 
 const client = new ApolloClient({
 	request: operation => {
@@ -24,9 +25,7 @@ function App() {
 	return (
 		<ApolloProvider client={client}>
 			<Router>
-				<>
-					<Navbar />
-					<Switch>
+				
 						<Route exact path="/" component={SearchBooks} />
 						<Route
 							exact
@@ -40,8 +39,7 @@ function App() {
 								</h1>
 							)}
 						/>
-					</Switch>
-				</>
+			
 			</Router>
 		</ApolloProvider>
 	);
